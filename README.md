@@ -21,7 +21,7 @@ Parameters:
 
 ```javascript
 var createCube = require('primtivie-cube');
-var cubeMesh = createCube(1);
+var cube = createCube(1);
 ```
 
 `cube` will have the following structure:
