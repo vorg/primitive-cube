@@ -1,0 +1,35 @@
+{
+  "name": "primitive-cube",
+  "version": "1.0.0",
+  "description": "A minimal cube geometry for 3D rendering, including normals, UVs and cell indices (faces).",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Marcin Ignac",
+    "email": "marcin.ignac@gmail.com",
+    "url": "https://github.com/vorg"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "3d",
+    "simplical",
+    "complex",
+    "primitive",
+    "geometry",
+    "geom",
+    "cube",
+    "webgl"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vorg/primitive-cube.git"
+  },
+  "homepage": "https://github.com/vorg/primitive-cube",
+  "bugs": {
+    "url": "https://github.com/vorg/primitive-cube/issues"
+  }
+}
