@@ -35,6 +35,16 @@ var cubeMesh = createCube(1);
 }
 ```
 
+## Demo
+
+Download or clone this repo and run:
+
+```
+cd demo
+npm install
+npm start
+```
+
 ## License
 
 MIT, see [LICENSE.md](http://github.com/vorg/primitive-cube/blob/master/LICENSE.md) for details.
