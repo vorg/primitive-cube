@@ -1,4 +1,3 @@
-//TODO: add tex coords as uvs
 function createCube(sx, sy, sz) {
     if (sx === undefined) sx = 1.0;
     if (sy === undefined) sy = sx;
