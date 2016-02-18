@@ -14,7 +14,7 @@ A minimal cube geometry for 3D rendering, including normals, UVs and cell indice
 
 Parameters:  
 `sx` - size x, defaults to 1  
-`sy` - size y, defaults to `sx`
+`sy` - size y, defaults to `sx`  
 `sz` - size z, defaults to `sx`
 
 ## Example
