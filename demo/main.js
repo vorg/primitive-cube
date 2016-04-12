@@ -3,6 +3,7 @@ var Mat4         = require('pex-math/Mat4');
 var Vec3         = require('pex-math/Vec3');
 var glslify      = require('glslify-promise');
 var createCube   = require('../index.js');
+var computeEdges = require('geom-edges');
 
 Window.create({
     settings: {
@@ -11,7 +12,9 @@ Window.create({
     },
     resources: {
         vert: { glsl: glslify(__dirname + '/Material.vert') },
-        frag: { glsl: glslify(__dirname + '/Material.frag') }
+        frag: { glsl: glslify(__dirname + '/Material.frag') },
+        solidColorVert: { glsl: glslify(__dirname + '/SolidColor.vert') },
+        solidColorFrag: { glsl: glslify(__dirname + '/SolidColor.frag') }
     },
     init: function() {
         var ctx = this.getContext();
@@ -37,18 +40,19 @@ Window.create({
         var res = this.getResources();
 
         this.program = ctx.createProgram(res.vert, res.frag);
+        this.solidColorProgram = ctx.createProgram(res.solidColorVert, res.solidColorFrag);
 
-        var g = createCube();
+        var g = createCube(1,1,1,5,5,5);
 
-        var attributes = [
+        this.mesh = ctx.createMesh([
             { data: g.positions, location: ctx.ATTRIB_POSITION },
             { data: g.normals, location: ctx.ATTRIB_NORMAL },
             { data: g.uvs, location: ctx.ATTRIB_TEX_COORD_0 },
-        ];
+        ], { data: g.cells }, ctx.TRIANGLES);
 
-        var indices = { data: g.cells };
-
-        this.mesh = ctx.createMesh(attributes, indices, ctx.TRIANGLES);
+        this.meshWireframe = ctx.createMesh([
+            { data: g.positions, location: ctx.ATTRIB_POSITION },
+        ], { data: computeEdges(g.cells) }, ctx.LINES);
 
         var img = new Uint8Array([
             0xff, 0xff, 0xff, 0xff, 0xcc, 0xcc, 0xcc, 0xff,
@@ -76,7 +80,13 @@ Window.create({
         ctx.setModelMatrix(this.model);
 
         ctx.bindMesh(this.mesh);
-
         ctx.drawMesh();
+
+        ctx.bindProgram(this.solidColorProgram);
+        ctx.pushModelMatrix();
+        ctx.scale([1.01,1.01,1.01])
+        ctx.bindMesh(this.meshWireframe);
+        ctx.drawMesh();
+        ctx.popModelMatrix();
     }
 })
