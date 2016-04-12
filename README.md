@@ -10,18 +10,21 @@ A minimal cube geometry for 3D rendering, including normals, UVs and cell indice
 
 [![NPM](https://nodei.co/npm/primitive-cube.png)](https://www.npmjs.com/package/primitive-cube)
 
-#### `mesh = createCube([sx, sy, sz])`
+#### `mesh = createCube([sx, sy, sz, nx, ny, nz])`
 
 Parameters:  
 `sx` - size x, defaults to 1  
 `sy` - size y, defaults to `sx`  
 `sz` - size z, defaults to `sx`
+`nx` - num subdivisions on x axis, defaults to 1  
+`ny` - num subdivisions on y axis, defaults to `sx`  
+`nz` - num subdivisions on z axis, defaults to `sx`
 
 ## Example
 
 ```javascript
 var createCube = require('primtivie-cube');
-var cube = createCube(1);
+var cube = createCube(1, 1, 1, 3, 3, 3);
 ```
 
 `cube` will have the following structure:

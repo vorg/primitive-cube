@@ -16,6 +16,7 @@
     "beefy": "^2.1.5"
   },
   "dependencies": {
+    "geom-edges": "^1.2.0",
     "glslify-promise": "^1.0.1",
     "pex-context": "git://github.com/variablestudio/pex-context",
     "pex-io": "git://github.com/variablestudio/pex-io",
