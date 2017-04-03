@@ -1,20 +1,21 @@
 var Window       = require('pex-sys/Window');
 var Mat4         = require('pex-math/Mat4');
 var Vec3         = require('pex-math/Vec3');
-var glslify      = require('glslify-promise');
+var glslify      = require('glslify');
 var createCube   = require('../index.js');
 var computeEdges = require('geom-edges');
+
+var res = {
+  vert: glslify.file(__dirname + '/Material.vert'),
+  frag: glslify.file(__dirname + '/Material.frag'),
+  solidColorVert: glslify.file(__dirname + '/SolidColor.vert'),
+  solidColorFrag: glslify.file(__dirname + '/SolidColor.frag')
+}
 
 Window.create({
     settings: {
         width: 1024,
         height: 576
-    },
-    resources: {
-        vert: { glsl: glslify(__dirname + '/Material.vert') },
-        frag: { glsl: glslify(__dirname + '/Material.frag') },
-        solidColorVert: { glsl: glslify(__dirname + '/SolidColor.vert') },
-        solidColorFrag: { glsl: glslify(__dirname + '/SolidColor.frag') }
     },
     init: function() {
         var ctx = this.getContext();
@@ -36,8 +37,6 @@ Window.create({
         ctx.setProjectionMatrix(this.projection);
         ctx.setViewMatrix(this.view);
         ctx.setModelMatrix(this.model);
-
-        var res = this.getResources();
 
         this.program = ctx.createProgram(res.vert, res.frag);
         this.solidColorProgram = ctx.createProgram(res.solidColorVert, res.solidColorFrag);
@@ -65,7 +64,6 @@ Window.create({
           magFilter: ctx.NEAREST
         })
     },
-
     draw: function() {
         var ctx = this.getContext();
         ctx.setClearColor(1, 1, 1, 1);
@@ -86,7 +84,7 @@ Window.create({
         ctx.pushModelMatrix();
         ctx.scale([1.01,1.01,1.01])
         ctx.bindMesh(this.meshWireframe);
-        ctx.drawMesh();
+        ctx.drawMesh()
         ctx.popModelMatrix();
     }
 })

@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "geom-edges": "^1.2.0",
-    "glslify-promise": "^1.0.1",
+    "glslify": "^6.0.2",
+    "normals": "^1.0.1",
     "pex-context": "git://github.com/variablestudio/pex-context",
     "pex-io": "git://github.com/variablestudio/pex-io",
     "pex-math": "git://github.com/variablestudio/pex-math",
