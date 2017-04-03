@@ -1,6 +1,6 @@
 {
   "name": "primitive-cube",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A minimal cube geometry for 3D rendering, including normals, UVs and cell indices (faces).",
   "main": "index.js",
   "license": "MIT",
