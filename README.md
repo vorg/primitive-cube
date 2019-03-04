@@ -23,7 +23,7 @@ Parameters:
 ## Example
 
 ```javascript
-var createCube = require('primtivie-cube');
+var createCube = require('primitive-cube');
 var cube = createCube(1, 1, 1, 3, 3, 3);
 ```
 
